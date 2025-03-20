@@ -60,58 +60,7 @@
             {{ successMessage }}
         </div>
     </div>
-
-<!--     <script>
-        const { createApp } = Vue;
-
-        createApp({
-            data() {
-                return {
-                    surname: '',
-                    firstname: '',
-                    patronymic: '',
-                    email: '',
-                    phone: '',
-                    role: 'student',
-                    successMessage: '',
-
-                    // Добавлены botId и botToken
-                    botId: '2274',
-                    botToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI2OCIsImp0aSI6IjQ2YTk0ODlmNmIwYzBjZDA1MDVmZDYzZDE2ZWNmOTY4YjY1MjIxYjlkMWIzNDRiOGM0ZGQ0ZjNmZjk2Yzg0ZjFlZGI2YTIwODk5ZGFiZTViIiwiaWF0IjoxNzQxMzY1MDQ0LjcyNzcxNiwibmJmIjoxNzQxMzY1MDQ0LjcyNzcxOCwiZXhwIjoyMDU2NzI1MDQ0LjcyNjE1LCJzdWIiOiIiLCJzY29wZXMiOlsiKiJdfQ.fr3TSBRmWWJAMeDRu74N73XBYNdawhEhHugaPaVg4u0R5cPfACRXr-GlzdnwXRFHM3ECWOL0Al4DG1x5GwXv6Jookds4HVyK45vUryCSWDYX1v6R2yuNHuIH5IcB-No51CQBeFiMHEtawjPwu7bZSIoFxQBJErBmugmEF-ogiR4MkhgOmk5-KZAk_-zpqWH5N7krZHBAUj75LTcWDYHDwLI7TB1RiDs9XhPogokfgiVgFH2r0Xjiv1GJPzmPpp9TeoIKnSeIJHUMj5gxAvkY5C_N3vsgPU8znVeV1ke9wVcfhpVBWv3wU-E7jpR1iq6fFwCggYx99hRTcIwXU8knDDzOFLJHJeqOg9SmQTzt0r6R8RI1VnZAdI_9jwnFue9JYfB2EBDsgsEAUPaPl-_aGhTZvhiW-0m_KPHmAgzKVZgzXKmZH2RW4hrRt7JugM3o4XOuuP_lrV4uujEOT4WLYlNo0RZN5ZYky7oH7o7V12DExmGeIyibDad6TNhtTk7m0aL68ULDNImkrHBwMeFRILgCBc0iPVT0M7YDGOL5-jvuMvqZDXkHf7kax6od21_r27RuHX1E7OqjxnUH3VLczViu6fXjRflgE7YsYwyDj94gDiyJhAUMayMRRTrHY3JSg0nGbaiBPgDQvceP8v1ASy_7IwV_Tvj94ePPIT-Jk9Q'
-                };
-            },
-            methods: {
-                async submitForm() {
-                    const formData = {
-                        surname: this.surname,
-                        firstname: this.firstname,
-                        patronymic: this.patronymic,
-                        email: this.email,
-                        phone: this.phone,
-                        role: this.role
-                    };
-
-                    try {
-                        const response = await fetch(`https://api.telegram.org/bot${this.botToken}/sendMessage`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                chat_id: this.botId,
-                                text: `Новая регистрация:\nФамилия: ${formData.surname}\nИмя: ${formData.firstname}\nОтчество: ${formData.patronymic}\nEmail: ${formData.email}\nТелефон: ${formData.phone}\nРоль: ${formData.role}`
-                            })
-                        });
-
-                        if (response.ok) {
-                            this.successMessage = "Форма успешно отправлена!";
-                        } else {
-                            this.successMessage = "Ошибка отправки данных.";
-                        }
-                    } catch (error) {
-                        this.successMessage = "Ошибка соединения с сервером.";
-                    }
-                }
-            }
-        }).mount('#app');
-    </script> -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
