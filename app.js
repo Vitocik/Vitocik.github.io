@@ -29,7 +29,7 @@ createApp({
             };
             
             try {
-                let response = await fetch("https://your-backend-domain.com/register", {
+                let response = await fetch("https://vitocik.github.io/server?", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(userData)
