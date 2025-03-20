@@ -30,7 +30,7 @@ createApp({
             
             try {
                 // Отправляем данные на наш backend, который затем передаст их в Metabot
-                let response = await fetch("https://your-backend-domain.com/register", {
+                let response = await fetch("https://vitocik.github.io/server", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(userData)
