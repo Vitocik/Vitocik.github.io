@@ -9,7 +9,7 @@ createApp({
             email: "",
             phone: "",
             role: "",
-            successMessage: ""
+            successMessage: "" // Убедитесь, что переменная есть и содержит строку
         };
     },
     methods: {
@@ -29,8 +29,7 @@ createApp({
             };
             
             try {
-                // Отправляем данные на наш backend, который затем передаст их в Metabot
-                let response = await fetch("https://vitocik.github.io/server", {
+                let response = await fetch("https://your-backend-domain.com/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(userData)
@@ -39,6 +38,9 @@ createApp({
                 let result = await response.json();
                 if (result.success) {
                     this.successMessage = "✅ Регистрация успешна!";
+                    setTimeout(() => {
+                        this.successMessage = ""; // Автоматически скрывать сообщение через 3 сек
+                    }, 3000);
                     // Очистка полей формы
                     this.surname = this.firstname = this.patronymic = this.email = this.phone = "";
                 } else {
