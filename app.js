@@ -26,7 +26,7 @@ createApp({
             };
 
             try {
-                let response = await fetch("https://stage.metabot.dev/api/leads/update", {
+                let response = await fetch("https://vitocik.github.io/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(userData)
