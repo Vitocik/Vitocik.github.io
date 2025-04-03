@@ -3,50 +3,51 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            surname: "",
-            firstname: "",
-            patronymic: "",
-            email: "",
-            phone: "",
-            role: "",
-            successMessage: ""
+            surname: '',
+            firstname: '',
+            patronymic: '',
+            email: '',
+            phone: '',
+            role: '',
+            successMessage: ''
         };
     },
     methods: {
         async submitForm() {
-            let userData = {
-                fields: {
-                    surname: this.surname,
-                    firstname: this.firstname,
-                    patronymic: this.patronymic,
-                    email: this.email,
-                    phone: this.phone,
-                    role: this.role
-                }
+            // Извлекаем telegramId из Telegram Web App
+            const telegramId = window.Telegram.WebApp.initDataUnsafe?.user?.id || 'unknown';
+
+            // Формируем данные для отправки
+            const userData = {
+                telegramId: telegramId.toString(),
+                surname: this.surname,
+                firstname: this.firstname,
+                patronymic: this.patronymic,
+                email: this.email,
+                phone: this.phone,
+                role: this.role
             };
 
             try {
-                let response = await fetch("https://vitocik.github.io/register", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                const response = await fetch('http://localhost:3000/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(userData)
                 });
 
-                let result = await response.json();
-                if (result.success) {
-                    this.successMessage = "✅ Регистрация успешна!";
+                const result = await response.json();
+                if (response.ok) {
+                    this.successMessage = result.message;
+                    // Закрываем Telegram Web App через 2 секунды после успешной регистрации
                     setTimeout(() => {
-                        if (window.Telegram && window.Telegram.WebApp) {
-                            window.Telegram.WebApp.close();
-                        }
-                    }, 1500);
+                        window.Telegram.WebApp.close();
+                    }, 2000);
                 } else {
-                    alert("Ошибка: " + result.message);
+                    this.successMessage = result.error || 'Ошибка при регистрации';
                 }
             } catch (error) {
-                alert("Ошибка соединения с сервером.");
-                console.error(error);
+                this.successMessage = 'Ошибка при отправке данных: ' + error.message;
             }
         }
     }
-}).mount("#app");
+}).mount('#app');
